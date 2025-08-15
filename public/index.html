@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="theme-color" content="#FF6600" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="description" content="DIF eCommerce platform for fast and easy shopping" />
+    <title>DIF eCommerce</title>
+  </head>
+  <body>
+    <script>
+  (function() {
+    const blockedPatterns = [/mysidia/i, /gstatic/i];
+
+    // Block scripts already present
+    document.querySelectorAll('script').forEach(script => {
+      if (script.src && blockedPatterns.some(p => p.test(script.src))) {
+        console.warn("Blocked script:", script.src);
+        script.remove();
+      }
+    });
+
+    // Observe and block future inserted scripts
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node.tagName === 'SCRIPT' && node.src) {
+            if (blockedPatterns.some(p => p.test(node.src))) {
+              console.warn("Blocked dynamically added script:", node.src);
+              node.remove();
+            }
+          }
+        });
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  })();
+</script>
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

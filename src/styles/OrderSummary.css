@@ -1,0 +1,13 @@
+.order-summary-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.order-summary-container h2 {
+  margin-bottom: 20px;
+}
+
+.order-summary-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

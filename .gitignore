@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+# builds
+build/
+dist/
+# env/certs
+.env
+.env.*
+cert/
+*.pem
+*.key
+*.crt
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+# coverage / misc
+coverage/
+.DS_Store
